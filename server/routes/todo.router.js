@@ -2,22 +2,19 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool.js');
 
-toDoList = [];
+let toDoList = [
+    {
+    id: 1,
+    task: 'rake leaves',
+    tools: 'rake'
+  }
+];
 
 // GET
 router.get('/', (req, res) => {
     console.log('GET Request made for todo list');
     // Send back the list of items!
-    res.send(toDoList)
-    .then((result) => {
-        console.log('RESULT', result);
-        res.send(result.rows);
-      })
-      .catch((err) => {
-        console.log('ERROR:', err);
-  
-        res.sendStatus(500);
-      });
+    res.send(toDoList)       
 });
 // POST
 router.post('/', (req, res) => {
@@ -33,5 +30,15 @@ router.post('/', (req, res) => {
 // PUT
 
 // DELETE
+router.delete('/:id', (req, res) => {
+    console.log('Delete Request', req.params);
+    let id = Number(req.params.id)
+
+    toDoList = toDoList.filter((task) => {
+    return task.id!== id;
+    })
+
+    res.sendStatus(201);
+})
 
 module.exports = router;

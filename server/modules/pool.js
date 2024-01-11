@@ -1,6 +1,6 @@
 const pg = require('pg');
 
-let toDoList = [];
+
 
 const pool = new pg.Pool({
     host: 'localhost',
