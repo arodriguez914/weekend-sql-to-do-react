@@ -3,7 +3,7 @@ import {useState} from 'react';
 function App () {
   
   return (
-    <div>
+    <div className='todo-app'>
       <h1>TO DO APP</h1>
     </div>
   );
