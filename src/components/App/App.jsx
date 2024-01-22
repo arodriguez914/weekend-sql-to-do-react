@@ -1,10 +1,11 @@
 import {useState} from 'react';
+import ListHeader from '../ListHeader/ListHeader';
 
 function App () {
   
   return (
-    <div className='todo-app'>
-      <h1>TO DO APP</h1>
+    <div className='app'>
+      <ListHeader listName={'To Do List'}/>
     </div>
   );
 

@@ -13,8 +13,15 @@ let toDoList = [
 // GET
 router.get('/', (req, res) => {
     console.log('GET Request made for todo list');
-    // Send back the list of items!
-    res.send(toDoList)       
+    
+    const dbQuery = 'SELECT * FROM to-do;';
+    pool.query(dbQuery)
+    .then ((result) => {res.send(result.rows); })      
+    .catch((err) => {
+      console.error("ERROR", err);
+      res.status(500).send("ERROR FETCHING RESULTS");
+  });   
+
 });
 // POST
 router.post('/', (req, res) => {

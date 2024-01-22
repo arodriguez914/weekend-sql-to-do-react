@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
 
-function ListHeader() {
+function ListHeader({ listName }) {
+  
   return (
-    <div>ListHeader</div>
+  <div>
+    <h1 className="list-header">{listName}</h1>
+    <div className='button-container'>
+        <button className="create">ADD NEW</button>
+    </div>
+  </div>
   )
 }
 
-export default ListHeader
+export default ListHeader;

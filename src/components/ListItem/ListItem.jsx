@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ListItem() {
+function ListItem( ) {
   return (
     <div>ListItem</div>
   )
