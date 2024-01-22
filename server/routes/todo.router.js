@@ -34,6 +34,25 @@ router.post('/', (req, res) => {
 });
 
 // PUT
+router.put('/:id', (req, res) => {
+  // Obtain the req body and id
+  const { task, tools } = req.body;
+  let id = req.params.id;
+  
+  const dbQuery = `
+      UPDATE todos
+      SET task = $1, tools = $2 WHERE id = $3;`;
+
+  pool
+      .query(dbQuery, [task, tools, id])
+      .then((result) => {
+          res.status(200).send("Task updated");
+      })
+      .catch((err) => {
+          console.error('ERROR', err);
+          res.status(500).send("Error updating");
+      });   
+});
 
 // DELETE
 router.delete('/:id', (req, res) => {
