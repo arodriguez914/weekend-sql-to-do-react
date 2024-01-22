@@ -56,14 +56,20 @@ router.put('/:id', (req, res) => {
 
 // DELETE
 router.delete('/:id', (req, res) => {
-    console.log('Delete Request', req.params);
-    let id = Number(req.params.id)
+  console.log('Delete Request', req.params);
+  const id = req.params.id;
 
-    toDoList = toDoList.filter((task) => {
-    return task.id!== id;
-    })
+  const dbQuery = 'DELETE FROM todos WHERE id = $1;';
 
-    res.sendStatus(201);
-})
+  pool
+      .query(dbQuery, [id])
+      .then((result) => {
+          res.status(200).send("Task deleted");
+      })
+      .catch((err) => {
+          console.error('ERROR', err);
+          res.status(500).send("Error 500");
+      });   
+});
 
 module.exports = router;
