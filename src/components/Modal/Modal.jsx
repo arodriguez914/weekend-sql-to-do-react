@@ -1,11 +1,25 @@
-import React from "react";
+import { useState } from "react";
+
 
 function Modal() {
-  const mode = "edit";
+    const mode = "create";
+    const editMode = mode === 'edit' ? true : false
+    const [data, setData] = useState({
+        task: "",
+        tools: "",
+    })
 
-  const handleChange = () => {
-    console.log( 'changing');
-  }
+  const handleChange = (event) => {
+    console.log("changing", event)
+    const {name, value} = event.target
+
+    setData(data => ({
+        ...data,
+        [name] : value
+
+    }))
+    console.log(data);
+  };
 
   return (
     <div className="overlay">
@@ -16,7 +30,15 @@ function Modal() {
         </div>
 
         <form>
-          <input required maxLength={30} placeholder=" Enter new task" name="title" value={""} onChange={handleChange}/>
+          <input
+            required
+            maxLength={30}
+            placeholder=" Enter new task"
+            name="task"
+            value={data.task}
+            onChange={handleChange}
+          />
+          <br />
           <input className={mode} type="submit" />
         </form>
       </div>
