@@ -23,7 +23,7 @@ body {
     border-bottom: black 1px solid;
 }
 
-.button-container {
+.button-container, .info-container {
     display: flex;
     align-items: center;
 }
@@ -33,4 +33,18 @@ body {
     padding: 5px 10px;
     border-radius: 12px;
     background-color: transparent;
+}
+
+.list-item {
+    width: 100%;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: right;
+    padding-right: 20px;
+    
+}
+
+.icon {
+    padding: 10px;
 }
