@@ -1,12 +1,12 @@
 import React from "react";
 import TickIcon from "../TickIcon/TickIcon";
 
-function ListItem() {
+function ListItem( {} ) {
   return (
     <li className="list-item">
       <div className="info-container">
         <TickIcon />
-        <p className="task-title">{}</p>
+        <p className="task-title">{ }</p>
       </div>
       <div className="button-container"></div>
       <button className="edit">EDIT</button>

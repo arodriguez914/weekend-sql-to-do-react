@@ -1,38 +1,34 @@
 import { useState, useEffect } from "react";
 import ListHeader from "../ListHeader/ListHeader";
 import ListItem from "../ListItem/ListItem";
-import axios from "axios";
+import { fetchTodo } from "../../todoApi/todo.api";
 
 function App() {
-  const [tasks, setTasks] = useState('')
-  const [tools, setTools] = useState('')
+  const [todos, setTodos] = useState([])
+  
 
-  const fetchData = () => {
-    axios({
-      method: "GET",
-      url: "/todo",
-    })
+  const refreshTodos = () => {
+    fetchTodo()
       .then((response) => {
         console.log(response.data)
-        setTasks(response.data);
+        setTodos(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  
-
-  fetchData();
 
   useEffect(() => {
-    fetchData()
+    refreshTodos()
   }, [])
+
+
 
 
 return (
   <div className="app">
-    <ListHeader listName={"To Do List"} />
-    <ListItem />
+  <ListHeader listName={"To Do List"} />
+  <ListItem />
   </div>
 );
 }
