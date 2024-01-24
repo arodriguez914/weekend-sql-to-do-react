@@ -1,136 +1,135 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: darkgrey;
-    display: flex;
-    justify-content: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-.app {
-    background-color: white;
-    box-shadow: transparent black;
-    border-radius: 10px;
-    padding: 10px;
-    width: 800px;
-    margin-top: 50px;
-}
-
-.list-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: black 1px solid ;
-}
-
-.button-container, .info-container {
-    display: flex;
-    align-items: center;
-}
-
-.button-container button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    border-radius: 12px;
-    justify-content: right;
-    background-color: transparent;
-}
-
-.list-item {
-    width: 100%;
-    margin: 10px;
-    border-radius: 10px;
-    display: inline flex;
-    margin-left: 76%;
-    padding-right: 20px;      
-}
-
-.icon {
-    padding: 10px;
-}
-
-.edit{
-    border: 1.5px solid rgb(58, 173, 143);
-    color:  rgb(58, 173, 143);
-}
-
-.delete{
-    border: 1.5px solid rgb(235, 114, 84);
-    color:  rgb(235, 114, 84);
-}
-
-.edit:hover {
-    background-color: rgb(58, 173, 143);
-    color: white;
-}
-
-.delete:hover{
-    background-color: rgb(235, 114, 84);
-    color: white;
-}
-
-.edit:active, .delete:active, .create:active {
-    color:  rgb(1, 18, 22);
-}
-
-.create {
-    border: 1.5px solid rgb(89, 46, 92);
-    color: rgb(89, 46, 92);
-    text-transform: uppercase;
-}
-
-.create:hover {
-    background-color: rgb(89, 46, 92);
-    color: white;
-}
-
-input {
-    margin: 11px 0;
-    padding: 12px 16px;
-    border-radius: 12px;
-     border: 1.5px solid rgb(230,232,236);
-}
-
-.overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal {
-    width: 500px;
-    background-color: rgb(255,255,255);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: rgba(0,0,0,0.05) 0 6px 24px 0, rgba(0,0,0,0.08) 0 0 0 1px;
-
-}
-
-.modal .form-title-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.modal .form-title-container button {
-    border: none;
-    background-color: transparent;
-}
-
-.modal .form-title-container button:active {
-    color: red;
-}
-
-.modal form {
+    background: #333;
+    color: hsl(200, 100%, 90%);
+    max-width: 400px;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+  
+  .new-item-form {
     display: flex;
     flex-direction: column;
-}
-
-.modal label {
-    font-size: 13px;
-}
+    gap: 0.5rem;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  
+  .btn {
+    background: hsl(200, 100%, 50%, 0.1);
+    border: 1px solid hsl(200, 100%, 50%);
+    color: hsl(200, 100%, 50%);
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .btn:hover,
+  .btn:focus-visible {
+    background: hsl(200, 100%, 50%, 0.2);
+  }
+  
+  .btn.btn-danger {
+    background: hsl(0, 100%, 40%, 0.1);
+    border: 1px solid hsl(0, 100%, 40%);
+    color: hsl(0, 100%, 40%);
+  }
+  
+  .btn.btn-danger:hover,
+  .btn.btn-danger:focus-visible {
+    background: hsl(0, 100%, 40%, 0.2);
+  }
+  
+  .new-item-form input {
+    outline: none;
+    border: 1px solid hsl(200, 100%, 40%);
+    background: hsl(200, 100%, 30%);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    color: hsl(200, 100%, 90%);
+  }
+  
+  .new-item-form input:focus {
+    border: 1px solid hsl(200, 100%, 70%);
+  }
+  
+  .header {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .list {
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
+    list-style: none;
+  }
+  
+  .list li:has(input:checked) label {
+    color: hsl(200, 20%, 40%);
+  }
+  
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .list li {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .list li label {
+    display: flex;
+    gap: 0.25rem;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  .list li:has(input:focus-visible) label {
+    outline: 1px solid hsl(200, 100%, 50%);
+  }
+  
+  .list li input {
+    outline: none;
+    width: 0;
+    height: 0;
+    appearance: none;
+    pointer-events: none;
+    position: absolute;
+  }
+  
+  .list li label::before {
+    content: "";
+    display: block;
+    width: 0.9rem;
+    height: 0.9rem;
+    background: hsl(200, 100%, 90%);
+    border-radius: 0.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .list li label:hover::before {
+    background: hsl(200, 100%, 80%);
+  }
+  
+  .list li:has(input:checked) label::before {
+    content: "✔";
+    background: hsl(200, 100%, 40%);
+    color: hsl(200, 100%, 90%);
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .list li:has(input:checked) label:hover::before {
+    background: hsl(200, 100%, 30%);
+  }
