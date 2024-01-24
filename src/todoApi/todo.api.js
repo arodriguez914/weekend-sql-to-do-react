@@ -1,17 +1,17 @@
 import axios from "axios";
 
 export const fetchTodo = () => {
-    return axios.get("/todo");
+    return axios.get("/api/todo");
   };
 
 export const postTodo = (taskData) => {
-  return axios.post("/todo", taskData);
+  return axios.post("/api/todo", taskData);
 };
 
 export const deleteTodo = (taskId) => {
-  return axios.delete(`/todo/${taskId}`);
+  return axios.delete(`/api/todo/${taskId}`);
 };
 
 export const updateTodo = (taskId) => {
-  return axios.put(`/todo/${taskId}`);
+  return axios.put(`/api/todo/${taskId}`);
 };

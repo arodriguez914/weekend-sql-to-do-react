@@ -8,7 +8,8 @@ function App() {
   
 
   const refreshTodos = () => {
-    fetchTodo()
+    const todoPromise = fetchTodo();
+    todoPromise
       .then((response) => {
         console.log(response.data)
         setTodos(response.data);
@@ -22,15 +23,12 @@ function App() {
     refreshTodos()
   }, [])
 
-
-
-
 return (
   <div className="app">
   <ListHeader listName={"To Do List"} />
-  <ListItem />
+  <ListItem todos={todos} refreshTodos={refreshTodos}/>
   </div>
-);
+  );
 }
 
 export default App;

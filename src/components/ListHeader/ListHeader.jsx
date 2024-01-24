@@ -1,14 +1,11 @@
-import React from "react";
-import Modal from "../Modal/Modal";
+import React, {useState} from "react";
 
-function ListHeader({ listName }) {
-  
+function ListHeader({ listName }) { 
   return (
   <div>
-    <h1 className="list-header">{listName}
-        <button className="create">ADD NEW</button>
+    <h1 className="list-header">
+        {listName}
     </h1>
-    <Modal />
   </div>
   )
 }
