@@ -1,14 +1,32 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-function NewTodoForm( { addTodo }) {
+function NewTodoForm() {
   const [newItem, setNewItem] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  //called when submit is pressed
+  const addItem = (newTodo) => {
+    //POST todo to server
+    axios({
+      method: "POST",
+      url: "/api/todo",
+      data: { task: newTodo },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    addTodo(newItem)
+  // Called when submit button is pressed
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-    setNewItem("")
+    addTodo(newItem);
+    addItem(newItem);
+    setNewItem("");
   };
 
   return (
@@ -22,7 +40,7 @@ function NewTodoForm( { addTodo }) {
         type="text"
         id=" item"
       />
-      <button className="btn">Submit</button>
+      <input className="btn" value="Submit" type="submit" />
     </form>
   );
 }

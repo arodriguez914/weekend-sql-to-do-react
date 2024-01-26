@@ -23,11 +23,6 @@ function App() {
     refreshItems();
   }, []);
 
-  const addTodo = (title) => {
-     setTodos((currentTodos) => {
-      return [...currentTodos, { title, completed: false }];
-    });
-  }
 
   const toggleTodo = (id, completed) => {
     setTodos((currentTodos) => {
@@ -51,7 +46,7 @@ function App() {
     <div className="app">
       {/* <ListItem todos={todos} refreshTodos={refreshTodos}/> */}
       {/* <ListForm /> */}
-      <NewTodoForm addTodo={addTodo}/>
+      <NewTodoForm />
       <ListHeader className="header" listName={"To Do List"} />
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
     </div>
