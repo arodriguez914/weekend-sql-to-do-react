@@ -6,7 +6,7 @@ const pool = require('../modules/pool.js');
 router.get('/', (req, res) => {
     console.log('GET Request made for todo list');
     
-    const dbQuery = 'SELECT * FROM todos;';
+    const dbQuery = 'SELECT * FROM "todos";';
     
     pool.query(dbQuery)
     .then ((result) => {res.send(result.rows); })      
@@ -19,11 +19,11 @@ router.get('/', (req, res) => {
 // POST
 router.post('/', (req, res) => {
   
-    const { task, tools } = req.body;
-    const dbQuery = `INSERT INTO todos (task, tools) VALUES ($1, $2);`;
+    const { task } = req.body;
+    const dbQuery = `INSERT INTO "todos" ("task") VALUES ($1);`;
     
     pool
-        .query(dbQuery, [task, tools])
+        .query(dbQuery, [task])
         .then((result) => {
             res.status(201).send("Task added to the To-Do List");
         })
@@ -36,15 +36,15 @@ router.post('/', (req, res) => {
 // PUT
 router.put('/:id', (req, res) => {
   // Obtain the req body and id
-  const { task, tools } = req.body;
+  const { task } = req.body;
   let id = req.params.id;
   
   const dbQuery = `
-      UPDATE todos
-      SET task = $1, tools = $2 WHERE id = $3;`;
+      UPDATE "todos"
+      SET "task" = $1 WHERE "id" = 2;`;
 
   pool
-      .query(dbQuery, [task, tools, id])
+      .query(dbQuery, [task])
       .then((result) => {
           res.status(200).send("Task updated");
       })
@@ -59,7 +59,7 @@ router.delete('/:id', (req, res) => {
   console.log('Delete Request', req.params);
   const id = req.params.id;
 
-  const dbQuery = 'DELETE FROM todos WHERE id = $1;';
+  const dbQuery = 'DELETE FROM "todos" WHERE "id" = $1;';
 
   pool
       .query(dbQuery, [id])

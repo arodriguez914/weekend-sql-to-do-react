@@ -1,37 +1,27 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { postTodo } from "../../todoApi/todo.api";
 
-function NewTodoForm() {
+function NewTodoForm(props) {
   const [newItem, setNewItem] = useState("");
 
-  //called when submit is pressed
-  const addItem = (newTodo) => {
+  // Called when submit button is pressed
+  const handleSubmit = (event) => {
+    event.preventDefault();
     //POST todo to server
-    axios({
-      method: "POST",
-      url: "/api/todo",
-      data: { task: newTodo },
-    })
+    postTodo({ task: newItem })
       .then((response) => {
         console.log(response);
+        props.refreshTodos();
+        setNewItem('')
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  // Called when submit button is pressed
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    addTodo(newItem);
-    addItem(newItem);
-    setNewItem("");
-  };
-
   return (
     <form onSubmit={handleSubmit} className="new-item-form">
-      <div className="form-row"></div>
+      <div className="form-row">
       <label htmlFor="item">New Task</label>
       <input
         required
@@ -41,6 +31,7 @@ function NewTodoForm() {
         id=" item"
       />
       <input className="btn" value="Submit" type="submit" />
+      </div>
     </form>
   );
 }

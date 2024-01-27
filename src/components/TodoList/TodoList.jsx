@@ -1,22 +1,21 @@
+import React, { useState } from "react";
+import Grid from "@mui/material/Grid";
 import TodoItem from "../TodoItem/TodoItem";
 
-
-function TodoList({ todos, toggleTodo, deleteTodo }) {
+function TodoList({ todoList, refreshTodos }) {
   return (
-    <ul className="list">
-      {todos.length === 0 && "No Todos"}
-      {todos.map((todo) => {
+    <Grid>
+      {todoList.map((taskData) => {
         return (
           <TodoItem
-            {...todo}
-            key={todo.id}
-            toggleTodo={toggleTodo}
-            deleteTodo={deleteTodo}
+            key={taskData.id}
+            taskData={taskData}
+            refreshTodos={refreshTodos}
           />
         );
       })}
-    </ul>
+    </Grid>
   );
 }
 
-export default TodoList
+export default TodoList;

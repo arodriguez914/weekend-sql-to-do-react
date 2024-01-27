@@ -1,10 +1,9 @@
-CREATE TABLE "to-do" (
+CREATE TABLE "todos" (
 	"id" SERIAL PRIMARY KEY,
 	"task" varchar(255),
-	"tools" text
 );
 
-INSERT INTO "to-do" ("task", "tools")
+INSERT INTO "todos" ("task")
 VALUES 
-('Unclog toilet', 'plunger'),
-('Sweep kitchen', 'broom');
+('Unclog toilet'),
+('Sweep kitchen');
