@@ -1,6 +1,6 @@
 CREATE TABLE "todos" (
 	"id" SERIAL PRIMARY KEY,
-	"task" varchar(255),
+	"task" varchar(255)
 );
 
 INSERT INTO "todos" ("task")
